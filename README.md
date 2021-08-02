@@ -33,3 +33,12 @@ Reta(x,y)
 [1] 0.16 0.98 
 plot(Reta(x,y))
 ````
+![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q1_b.jpeg "Reta")
+
+###Q2
+> (a) Usando todos os dados, encontre os limites de controle para os gráfico R, construa o gráfico e plote os dados.
+````R
+amostras = matrix(c(34.2,3,31.6,4,31.8,4,33.4,5,35.0,4,32.1,2,32.6,7,33.8,9,34.8,10,38.6,4,35.4,8,34.0,6,36.0,4,37.2,7,35.2,3,33.4,10,35.0,4,34.4,7,33.9,8,34.0,4), ncol = 2, byrow = TRUE)
+plot.xbar = qcc(amostras, type="xbar")
+````
+
