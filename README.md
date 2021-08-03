@@ -37,8 +37,49 @@ plot(Reta(x,y))
 
 ###Q2
 > (a) Usando todos os dados, encontre os limites de controle para os gráfico R, construa o gráfico e plote os dados.
+
 ````R
-amostras = matrix(c(34.2,3,31.6,4,31.8,4,33.4,5,35.0,4,32.1,2,32.6,7,33.8,9,34.8,10,38.6,4,35.4,8,34.0,6,36.0,4,37.2,7,35.2,3,33.4,10,35.0,4,34.4,7,33.9,8,34.0,4), ncol = 2, byrow = TRUE)
-plot.xbar = qcc(amostras, type="xbar")
+amostras = matrix(c(34.2,31.6,31.8,33.4,35.0,32.1,32.6,33.8,34.8,38.6,35.4,34.0,36.0,37.2,35.2,33.4,35.0,34.4,33.9,34.0), ncol=1)
+
+q_amostras <- qcc(data = amostras,
+                   type = "R",
+                   sizes = 5,
+                   plot = TRUE)
+summary(q_amostras)
+
+#R chart for amostras
+#Summary of group statistics:
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#31.60   33.40   34.10   34.32   35.05   38.60
+
+#Group sample size:  5
+#Number of groups:  20
+#Center of group statistics:  34.32
+#Standard deviation:  0
 ````
+
+````R
+amplitude = matrix(c(3,4,4,5,4,2,7,9,10,4,8,6,4,7,3,10,4,7,8,4), ncol=1)
+
+q_amplitude <- qcc(data = amplitude,
+                   type = "R",
+                   sizes = 5,
+                   plot = TRUE)
+summary(q_amplitude)
+
+#R chart for amostras
+#Summary of group statistics:
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#2.00    4.00    4.50    5.65    7.25   10.00
+
+#Group sample size:  5
+#Number of groups:  20
+#Center of group statistics:  5.65
+#Standard deviation:  0
+````
+
+
+
+
+
 
