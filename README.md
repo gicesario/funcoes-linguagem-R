@@ -58,6 +58,8 @@ summary(q_amostras)
 #Standard deviation:  0
 ````
 
+![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q2_amostras.jpeg "amostras")
+
 ````R
 amplitude = matrix(c(3,4,4,5,4,2,7,9,10,4,8,6,4,7,3,10,4,7,8,4), ncol=1)
 
@@ -77,7 +79,7 @@ summary(q_amplitude)
 #Center of group statistics:  5.65
 #Standard deviation:  0
 ````
-
+![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q2_amplitude.jpeg "Amplitude")
 
 
 
