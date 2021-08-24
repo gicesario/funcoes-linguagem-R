@@ -1,5 +1,8 @@
-### Q1
-> (a) Calcule o coeficiente de correlação linear entre X e Y:
+> Gisela Cesario de Araujo
+
+
+# Q1
+## (a) Calcule o coeficiente de correlação linear entre X e Y:
 
 ````R
 coeficiente=function(x,y){
@@ -16,7 +19,7 @@ y=c(2.1,1.8,1.9,4.5,4.2,4.0,6.2,6.0,6.5,8.2,7.8,7.7,9.6,10,10.1)
 coeficiente(x,y)
 [1] 0.9960838
 ````
-> (b) Obtenha a reta de regressão da variável Y em função de X:
+## (b) Obtenha a reta de regressão da variável Y em função de X:
 
 ````R
 Reta=function(x,y){
@@ -35,8 +38,8 @@ plot(Reta(x,y))
 ````
 ![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q1_b.jpeg "Reta")
 
-###Q2
-> (a) Usando todos os dados, encontre os limites de controle para os gráfico R, construa o gráfico e plote os dados.
+## Q2
+## (a) Usando todos os dados, encontre os limites de controle para os gráfico R, construa o gráfico e plote os dados.
 
 ````R
 amostras = matrix(c(34.2,31.6,31.8,33.4,35.0,32.1,32.6,33.8,34.8,38.6,35.4,34.0,36.0,37.2,35.2,33.4,35.0,34.4,33.9,34.0), ncol=1)
@@ -81,7 +84,8 @@ summary(q_amplitude)
 ````
 ![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q2_amplitude.jpeg "Amplitude")
 
-
+## b) Avalie no gráfico se existem amostras fora los limites de controle e interpretre.
+De acordo com o gráfico da amosta, verifica-se que o ponto 10 é o único que está fora de destoante. Além disso, percebe-se que os dados estão relativamente aleatórios.
 
 
 
