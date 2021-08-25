@@ -19,7 +19,8 @@ coeficiente_correlacao_linar(x,y)
 ````
 ### (b) Obtenha a reta de regressão da variável Y em função de X:
 
-````Rreta_regresao_linear=function(x,y){
+````R
+reta_regresao_linear=function(x,y){
 media_x=sum(x)/15
 media_y=sum(y)/15
 media_xY=(sum(x)/15)*(sum(y)/15)
