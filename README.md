@@ -19,21 +19,19 @@ coeficiente_correlacao_linar(x,y)
 ````
 ## (b) Obtenha a reta de regressão da variável Y em função de X:
 
-````R
-reta_regresao_linear=function(x,y){
+````Rreta_regresao_linear=function(x,y){
 media_x=sum(x)/15
 media_y=sum(y)/15
 media_xY=(sum(x)/15)*(sum(y)/15)
 Sxx=sum(x*x)
 Sxy=sum(x*y)
-betha=(Sxy-(media_xY*15))/(Sxx-(media_x*media_x*15))
-alpha=(media_y-(betha*media_x))
-return(matrix(c(alpha,betha),ncol=1))}
+b=(Sxy-(media_xY*15))/(Sxx-(media_x*media_x*15))
+a=(media_y-(b*media_x))
+return(matrix(c(a,b),ncol=1))}
 reta_regresao_linear(x,y)
 plot(reta_regresao_linear(x,y))
 [1,] 0.16
 [2,] 0.98
-
 ````
 ![Alt Reta](https://github.com/gicesario/funcoes-linguagem-R/blob/main/q1_b.jpeg "Reta")
 
