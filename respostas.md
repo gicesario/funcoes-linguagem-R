@@ -155,13 +155,13 @@ exemplo52_significancia_alturas(0.95,27,167,171,9)
 
 > H1: µ < 500g
 ````R
-exemplo52_significancia_alturas=function(confianca,n,media_amostra,media_populacao,dp){
-z_calc=(media_amostra-media_populacao)/(dp/(sqrt(n)))
-alpha=(1-confianca)
-z_teorico=qnorm(1-(alpha),0,1)
-return(c(z_calc,z_teorico))}
-exemplo52_significancia_alturas(0.95,27,167,171,9)
-[1] -2.309401  1.644854
+exemplo53_teste_sem_desvio_padrao_populacao=function(confianca,n,media_amostra,media_populacao,dp){
+t_calc=(media_amostra-media_populacao)/(dp/(sqrt(n)))
+p_valor=pt(t_calc,n-1)
+t_teorico=qt(confianca, n-1)
+return(c(t_calc,t_teorico))}
+exemplo53_teste_sem_desvio_padrao_populacao(0.99,16,495,500,5)
+[1] -4.00000  2.60248
 ### Conclusão: como o valor de Zcalculado é menor que Zteorico, então rejeita-se H0
 ````
 
