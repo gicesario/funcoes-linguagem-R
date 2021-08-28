@@ -85,6 +85,19 @@ exemplo47_determinar_tamanho_amostra(50,1000)
 ### Conclusão: conclui-se que aproximadamente 22 dados devem ser considerados, com 95% de confiança 
 ````
 
+## Exemplo 4.8 (a)
+````R
+exemplo48a_amostra_confianca=function(d){
+z=1.96
+estimacao_p=0.25 # abordagem conservadora, amostra pode ser maior que o necessário
+erro=(0.05^2)
+tamanho=((1.96**2)*(0.25/(erro)))
+return(tamanho)}
+exemplo48a_amostra_confianca()
+[1] 384.16
+### Conclusão: considerando um erro de no máximo 5%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 364
+````
+
 
 ## Q1
 ### (a) Calcule o coeficiente de correlação linear entre X e Y:
