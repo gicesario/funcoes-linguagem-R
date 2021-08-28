@@ -54,7 +54,21 @@ ate=(diferenca+erro)
 return(c(de,ate))}
 exemplo45_intervalo_diferenca_duas_medias_amostras_pequenas(10,45.33,1.54,11,43.54,2.96)
 [1] -0.09993731  3.67993731
-### Conclusão: conclui, com 99% de confiança, que não há diferença entre as médias das amostras 
+### Conclusão: conclui-se, com 99% de confiança, que não há diferença entre as médias das amostras 
+````
+
+## Exemplo 4.6
+````R
+exemplo46_intervalo_confianca_proporcao=function(n,amostra){
+z=1.96
+estimativa=(amostra/n)
+erro=(z*sqrt((estimativa*(1-estimativa))/n))
+de=(estimativa-erro)
+ate=(estimativa+erro)
+return(c(de*100,ate*100))}
+exemplo46_intervalo_confianca_proporcao(600,420)
+[1] 66.33318 73.66682
+### Conclusão: o intervalo 66.33318%;73.66682% contém a porcentagem de sucessos, com 95% de confiança
 ````
 
 
