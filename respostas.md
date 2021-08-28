@@ -1,5 +1,17 @@
 > Gisela Cesario de Araujo
 
+## Exemplo 4.2
+````R
+exemplo42_parametro_media_desconhecida=function(n,media,dp){
+z=2.58
+erro=(z*(dp/sqrt(n)))
+de=(media-erro)
+ate=(media+erro)
+return(c(de,ate))}
+exemplo42_parametro_media_desconhecida(38,45,6)
+[1] 42.48881 47.51119
+````
+### Conclusão: o tempo médio está no intervalo 42.48881;47.51119, com 99% de confiança
 
 ## Q1
 ### (a) Calcule o coeficiente de correlação linear entre X e Y:
