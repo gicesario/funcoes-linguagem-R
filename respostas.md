@@ -25,7 +25,21 @@ ate=(media+erro)
 return(c(de,ate))}
 exemplo43_t_de_student(22,15,5)
 [1] 12.78271 17.21729
-### Conclusão: o tempo médio está no intervalo 12.78271;17.21729, com 99% de confiança
+### Conclusão: o tempo médio está no intervalo 12.78271;17.21729, com 95% de confiança
+````
+
+## Exemplo 4.4
+````R
+exemplo44_intervalo_diferenca_duas_medias=function(n1,media1,dp1,n2,media2,dp2){
+z=1.96
+diferenca=(media1-media2)
+erro=(z*(sqrt(((dp1**2)/n1)+((dp2**2)/n2))))
+de=(diferenca-erro)
+ate=(diferenca+erro)
+return(c(de,ate))}
+exemplo44_intervalo_diferenca_duas_medias(30,21.3,2.6,30,13.4,1.9)
+[1] 6.747649 9.052351
+### Conclusão: com o intervalo 6.747649;9.052351, concluí-se que a resposta da questão é significativa, pois não não há 0 no intervalo (com 95% de confiança!)
 ````
 
 
