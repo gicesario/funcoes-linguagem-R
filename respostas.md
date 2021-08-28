@@ -87,15 +87,26 @@ exemplo47_determinar_tamanho_amostra(50,1000)
 
 ## Exemplo 4.8 (a)
 ````R
-exemplo48a_amostra_confianca=function(d){
+exemplo48a_amostra_confianca=function(erro_maximo){
 z=1.96
 estimacao_p=0.25 # abordagem conservadora, amostra pode ser maior que o necessário
-erro=(0.05^2)
+erro=(erro_maximo**2)
 tamanho=((1.96**2)*(0.25/(erro)))
 return(tamanho)}
-exemplo48a_amostra_confianca()
-[1] 384.16
-### Conclusão: considerando um erro de no máximo 5%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 364
+exemplo48a_amostra_confianca(0.05)
+### Conclusão: considerando um erro de no máximo 5%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 365
+````
+
+## Exemplo 4.8 (b)
+````R
+exemplo48b_amostra_confianca_estimativa_previa=function(erro_maximo, estimativa_previa){
+z=1.96
+erro=(erro_maximo**2)
+tamanho=((1.96**2)*((estimativa_previa*(1-estimativa_previa))/(erro)))
+return(tamanho)}
+exemplo48b_amostra_confianca_estimativa_previa(0.07,0.6)
+[1] 188.16
+### Conclusão: considerando um erro de no máximo 7%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 189
 ````
 
 
