@@ -109,6 +109,33 @@ exemplo48b_amostra_confianca_estimativa_previa(0.07,0.6)
 ### Conclusão: considerando um erro de no máximo 7%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 189
 ````
 
+## Exemplo 4.8 (c)
+````R
+exemplo48c_amostra_mais_adequada=function(populacao,amostra1,amostra2){
+n1=(populacao*amostra1)/(populacao+amostra1)
+n2=(populacao*amostra2)/(populacao+amostra2)
+if(n1>n2)
+    return(amostra1)
+else
+    return(amostra2)}
+exemplo48c_amostra_mais_adequada(2000,385,189)
+[1] 385
+###Conclusão: a amostra a ser considerada é a 385
+````
+
+## Exemplo 4.9
+````R
+exemplo49_amostra_mais_confiavel_com_estimativa_apriori=function(dp,populacao){
+z=2.58
+amostra=(z*dp)**2
+amostra_corrigida=((populacao*amostra)/(populacao+amostra))
+return(amostra_corrigida)}
+exemplo49_amostra_mais_confiavel_com_estimativa_apriori(2.8,200)
+[1] 41.38702
+### Conclusão: o tamanho aproximado da amostra é 42, com erro máximo de 1%
+````
+
+
 
 ## Q1
 ### (a) Calcule o coeficiente de correlação linear entre X e Y:
