@@ -39,8 +39,24 @@ ate=(diferenca+erro)
 return(c(de,ate))}
 exemplo44_intervalo_diferenca_duas_medias(30,21.3,2.6,30,13.4,1.9)
 [1] 6.747649 9.052351
-### Conclusão: com o intervalo 6.747649;9.052351, concluí-se que a resposta da questão é significativa, pois não não há 0 no intervalo (com 95% de confiança!)
+### Conclusão: com o intervalo 6.747649;9.052351, conclui-se que a resposta da questão é significativa, pois não não há 0 no intervalo (com 95% de confiança!)
 ````
+
+## Exemplo 4.5
+````R
+exemplo45_intervalo_diferenca_duas_medias_amostras_pequenas=function(nh,mediah,vh,nm,mediam,vm){
+t=2.86
+diferenca=(mediah-mediam)
+variancia=((((nh-1)*vh)+((nm-1)*vm))/(nh+(nm-2)))
+erro=(t*sqrt(variancia*((1/nh)+(1/nm))))
+de=(diferenca-erro)
+ate=(diferenca+erro)
+return(c(de,ate))}
+exemplo45_intervalo_diferenca_duas_medias_amostras_pequenas(10,45.33,1.54,11,43.54,2.96)
+[1] -0.09993731  3.67993731
+### Conclusão: conclui, com 99% de confiança, que não há diferença entre as médias das amostras 
+````
+
 
 
 ## Q1
