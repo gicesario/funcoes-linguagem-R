@@ -136,7 +136,8 @@ exemplo49_amostra_mais_confiavel_com_estimativa_apriori(2.8,200)
 ````
 
 ## Exemplo 5.2
-> H0: µ = 171 cm
+> H0: µ = 171 cm 
+
 > H1: µ < 171 cM
 ````R
 exemplo52_significancia_alturas=function(confianca,n,media_amostra,media_populacao,dp){
@@ -151,6 +152,7 @@ exemplo52_significancia_alturas(0.95,27,167,171,9)
 
 ## Exemplo 5.3
 > H0: µ = 500g
+
 > H1: µ < 500g
 ````R
 exemplo52_significancia_alturas=function(confianca,n,media_amostra,media_populacao,dp){
