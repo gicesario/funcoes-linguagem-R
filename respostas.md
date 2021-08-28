@@ -71,6 +71,19 @@ exemplo46_intervalo_confianca_proporcao(600,420)
 ### Conclusão: o intervalo 66.33318%;73.66682% contém a porcentagem de sucessos, com 95% de confiança
 ````
 
+## Exemplo 4.7
+````R
+exemplo47_determinar_tamanho_amostra=function(de,ate){
+z=1.96
+n=4 #os dados não são assimétricos
+dp=((ate-de)/n)
+e=100
+tamanho=(((z*dp)/e)**2)
+return(tamanho)}
+exemplo47_determinar_tamanho_amostra(50,1000)
+[1] 21.66903
+### Conclusão: conclui-se que aproximadamente 22 dados devem ser considerados, com 95% de confiança 
+````
 
 
 ## Q1
