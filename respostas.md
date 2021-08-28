@@ -1,4 +1,4 @@
-> Gisela Cesario de Araujo
+# De: Gisela Cesario de Araujo
 
 ## Exemplo 4.2
 ````R
@@ -11,6 +11,21 @@ return(c(de,ate))}
 exemplo42_parametro_media_desconhecida(38,45,6)
 [1] 42.48881 47.51119
 ### Conclusão: o tempo médio está no intervalo 42.48881;47.51119, com 99% de confiança
+````
+
+## Exemplo 4.3
+````R
+exemplo43_t_de_student=function(n,media,dp){
+gl=n-1
+t=2.08
+estimativa_erro=(dp/sqrt(n))
+erro=(t*estimativa_erro)
+de=(media-erro)
+ate=(media+erro)
+return(c(de,ate))}
+exemplo43_t_de_student(22,15,5)
+[1] 12.78271 17.21729
+### Conclusão: o tempo médio está no intervalo 12.78271;17.21729, com 99% de confiança
 ````
 
 
