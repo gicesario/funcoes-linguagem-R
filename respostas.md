@@ -135,6 +135,19 @@ exemplo49_amostra_mais_confiavel_com_estimativa_apriori(2.8,200)
 ### Conclusão: o tamanho aproximado da amostra é 42, com erro máximo de 1%
 ````
 
+## Exemplo 4.9
+#### H0: µ = 171 cm
+#### H1:µ < 171 cM
+````R
+exemplo52_significancia_alturas=function(confianca,n,media_amostra,media_populacao,dp){
+z_calc=(media_amostra-media_populacao)/(dp/(sqrt(n)))
+alpha=(1-confianca)
+z_teorico=qnorm(1-(alpha),0,1)
+return(c(z_calc,z_teorico))}
+exemplo52_significancia_alturas(0.95,27,167,171,9)
+[1] -2.309401  1.644854
+### Conclusão: como o valor de Zcalculado é menor que Zteorico, então rejeita-se H0
+````
 
 
 ## Q1
