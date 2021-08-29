@@ -281,7 +281,28 @@ exemplo58_teste_proporcao_duas_populacoes(0.99,171,180,171,190)
 [1] "1.81757294999992" "2.32634787404084" "H0 rejeitado"
 ````
 
+## Exemplo 5.9
+> H0: O numero de acidentes nao muda conforme o dia da semana
+> H1:  Pelo menos um dos dias tem nuumero diferente dos demais.
+````R
+exemplo59_teste_aderencia=function(confianca,amostra,esperado,observado){
+total=sum(a)
+gl=length(a)-1
+qui2=sum(observado**2/esperado)
+x_calc=qchisq(confianca,gl)
 
+if (qui2>x_calc)
+  conclusao="H0 rejeitado"
+else
+   conclusao="H0 nao rejeitado"  
+
+return(c(qui2,x_calc,conclusao))}
+amostra=c(30,18,26,13,7,8,17)
+esperado=c(17,17,17,17,17,17,17)
+observado=c(13,1,9,-4,-10,-9,0)
+exemplo59_teste_aderencia(0.975,amostra,esperado,observado)
+[1] "26.3529411764706" "14.4493753354479" "H0 rejeitado"
+````
 
 
 
