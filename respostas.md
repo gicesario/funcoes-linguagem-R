@@ -283,7 +283,7 @@ exemplo58_teste_proporcao_duas_populacoes(0.99,171,180,171,190)
 
 ## Exemplo 5.9
 > H0: O numero de acidentes nao muda conforme o dia da semana
-> H1:  Pelo menos um dos dias tem nuumero diferente dos demais.
+> H1: Pelo menos um dos dias tem nuumero diferente dos demais.
 ````R
 exemplo59_teste_aderencia=function(confianca,amostra,esperado,observado){
 total=sum(a)
@@ -303,6 +303,30 @@ observado=c(13,1,9,-4,-10,-9,0)
 exemplo59_teste_aderencia(0.975,amostra,esperado,observado)
 [1] "26.3529411764706" "14.4493753354479" "H0 rejeitado"
 ````
+
+## Exemplo 5.10
+> H0: O numero de filhos e a renda sao independentes
+> H1: Existe dependencia entre o numero de filhos e a renda.
+````R
+exemplo510_teste_tabelas_contingencia=function(observado,esperado){
+total=sum(observado)
+gl=6
+dados=cbind(observado,esperado)
+qui2=chisq.test(dados)
+return(c(qui2))}
+observado=c(15,27,50,43,8,13,9,10,25,30,12,8)
+esperado=c(25.92,37.80,38.34,32.94,14.40,21,21.30,18.30,7.68,11.20,11.36,9.76)
+exemplo510_teste_tabelas_contingencia(observado,esperado)
+X-squared
+ 36.67406
+$p.value
+[1] 0.0001306524
+###Conclusão: Não há evidências suficiente para rejeitar H0, pois p-valor(0.0001306524) é baixo
+````
+
+
+
+
 
 
 
