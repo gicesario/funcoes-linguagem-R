@@ -1,4 +1,6 @@
-# De: Gisela Cesario de Araujo
+> Gisela Cesario de Araujo
+
+# PARTE 1
 
 ## Exemplo 4.2
 ````R
@@ -166,9 +168,9 @@ exemplo53_teste_sem_desvio_padrao_populacao(0.99,16,495,500,5)
 ````
 
 ## Exemplo 5.4
-> H0: desvio padrão amostra A = desvio padrão da amostra B
+> H0: desvio padrão da amostra A = desvio padrão da amostra B
 
-> H1: desvio padrão amostra A > desvio padrão da amostra B
+> H1: desvio padrão daamostra A > desvio padrão da amostra B
 ````R
 exemplo54_teste_amostras_desvio_padrao_independentes=function(confianca,racao_a,racao_b){
 dp_ra=3.12
@@ -181,13 +183,11 @@ s_aux1=((na-1)*dp_ra**2)+((nb-1)*dp_rb**2)
 gl=(na+nb-2)
 sp=s_aux1/gl
 t_calc=(media_a-media_b)/sqrt(sp*(1/na+1/nb))
-t_teorico=qt(0.95, gl)
-
+t_teorico=qt(confianca, gl)
 if (t_calc>t_teorico)
   conclusao="H0 rejeirado"
 else
-   conclusao="H0 nao rejeitado"
-   
+   conclusao="H0 nao rejeitado"   
 return(c(t_calc, conclusao))}
 a=c(3.40,2.99,3.21,3.07,3.01,3.27,3.23,3.02)
 b=c(2.82,3.16,2.98,3.04,3.15,3.20,3.00,3.01,3.08,3.06)
@@ -195,6 +195,37 @@ exemplo54_teste_amostras_desvio_padrao_independentes(0.95,a,b)
 [1] "0.102074757987168" "H0 nao rejeitado"
 ````
 
+## Exemplo 5.5
+> H0: média da amostra A = média da amostra B
+
+> H1: média da amostra A > média da amostra B
+````R
+exemplo55_teste_amostras_desvio_padrao_independentes=function(confianca,c1,c2){
+n=length(c1)
+sc1=var(c1)
+sc2=var(c2)
+media_c1=mean(c1)
+media_c2=mean(c2)
+t_aux1=(media_c1-media_c2)
+t_aux2=(sqrt((sc1/n)+(sc2/n)))
+t_calc=t_aux1/t_aux2
+t_teorico=qt(confianca, n-1)
+if (t_calc>t_teorico)
+  conclusao="H0 rejeirado"
+else
+   conclusao="H0 nao rejeitado"  
+return(c(t_calc, conclusao))}
+c1=c(101.2,102.0,100.8,102.3,101.6)
+c2=c(100.0,102.8,101.5,99.0,102.0)
+exemplo55_teste_amostras_desvio_padrao_independentes(0.95,c1,c2)
+[1] "0.703731550548992" "H0 nao rejeitado"
+````
+
+
+
+
+
+# PARTE 2
 ## Q1
 ### (a) Calcule o coeficiente de correlação linear entre X e Y:
 
