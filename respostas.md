@@ -221,6 +221,40 @@ exemplo55_teste_amostras_desvio_padrao_independentes(0.95,c1,c2)
 [1] "0.703731550548992" "H0 nao rejeitado"
 ````
 
+## Exemplo 5.6
+> H0: media igual ao valor suporto para a media das diferenças
+
+> H1: media diferente do valor suporto para a media das diferenças
+````R
+exemplo56_teste_amostras_dependentes=function(confianca,dif){
+n=length(dif)
+media=mean(dif)
+dp=sd(dif)
+t_calc=media/(dp/(sqrt(n)))
+t_teorico=-qt(confianca, n-1)
+if (t_calc>t_teorico)
+  conclusao="H0 rejeitado"
+else
+   conclusao="H0 nao rejeitado"  
+return(c(t_calc, t_teorico, conclusao))}
+dif=c(-19,-20,0,10,-16,-20,-8,-4,-25,-5)
+exemplo56_teste_amostras_dependentes(0.995,dif)
+[1] "-3.05769759183389" "-3.24983554159213" "H0 rejeitado"
+````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
