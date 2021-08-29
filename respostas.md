@@ -165,6 +165,36 @@ exemplo53_teste_sem_desvio_padrao_populacao(0.99,16,495,500,5)
 ### Conclusão: como o valor de Zcalculado é menor que Zteorico, então rejeita-se H0
 ````
 
+## Exemplo 5.4
+> H0: desvio padrão amostra A = desvio padrão da amostra B
+
+> H1: desvio padrão amostra A > desvio padrão da amostra B
+````R
+exemplo54_teste_amostras_desvio_padrao_independentes=function(confianca,racao_a,racao_b){
+dp_ra=3.12
+dp_rb=0.11
+na=length(racao_a)
+nb=length(racao_b)
+media_a=mean(racao_a)
+media_b=mean(racao_b)
+s_aux1=((na-1)*dp_ra**2)+((nb-1)*dp_rb**2)
+gl=(na+nb-2)
+sp=s_aux1/gl
+t_calc=(media_a-media_b)/sqrt(sp*(1/na+1/nb))
+t_teorico=qt(0.95, gl)
+
+if (t_calc>t_teorico)
+  conclusao="H0 rejeirado"
+else
+   conclusao="H0 nao rejeitado"
+   
+return(c(t_calc, conclusao))}
+a=c(3.40,2.99,3.21,3.07,3.01,3.27,3.23,3.02)
+b=c(2.82,3.16,2.98,3.04,3.15,3.20,3.00,3.01,3.08,3.06)
+exemplo54_teste_amostras_desvio_padrao_independentes(0.95,a,b)
+[1] "0.102074757987168" "H0 nao rejeitado"
+````
+
 ## Q1
 ### (a) Calcule o coeficiente de correlação linear entre X e Y:
 
