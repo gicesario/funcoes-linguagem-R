@@ -242,6 +242,24 @@ exemplo56_teste_amostras_dependentes(0.995,dif)
 [1] "-3.05769759183389" "-3.24983554159213" "H0 rejeitado"
 ````
 
+## Exemplo 5.7
+> H0: p = p0 = 0,57
+
+> H1: p < 0,57
+````R
+exemplo57_teste_proporcao_populacional=function(confianca,populacao,amostra,previsao){
+p_frequencia=amostra/populacao
+z_calc=(p_frequencia-previsao)/(sqrt((previsao*(1-previsao))/populacao))
+z_teorico=-qnorm(confianca,0,1)
+
+if (z_calc<z_teorico)
+  conclusao="H0 rejeitado"
+else
+   conclusao="H0 nao rejeitado"  
+return(c(z_calc, z_teorico, conclusao))}
+exemplo57_teste_proporcao_populacional(0.95,200,98, 0.57)
+[1] "-2.28524795616017" "-1.64485362695147" "H0 rejeitado"
+````
 
 
 
