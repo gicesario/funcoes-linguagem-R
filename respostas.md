@@ -5,49 +5,46 @@
 ## Exemplo 4.2
 ````R
 exemplo42_parametro_media_desconhecida=function(n,media,dp){
-z=2.58
+z=qnorm(0.99,0,1)
 erro=(z*(dp/sqrt(n)))
 de=(media-erro)
 ate=(media+erro)
 return(c(de,ate))}
 exemplo42_parametro_media_desconhecida(38,45,6)
-[1] 42.48881 47.51119
-### Conclusão: o tempo médio está no intervalo 42.48881;47.51119, com 99% de confiança
+[1] 42.7357 47.2643
 ````
 
 ## Exemplo 4.3
 ````R
 exemplo43_t_de_student=function(n,media,dp){
 gl=n-1
-t=2.08
+t=qt(0.975,gl)
 estimativa_erro=(dp/sqrt(n))
 erro=(t*estimativa_erro)
 de=(media-erro)
 ate=(media+erro)
 return(c(de,ate))}
 exemplo43_t_de_student(22,15,5)
-[1] 12.78271 17.21729
-### Conclusão: o tempo médio está no intervalo 12.78271;17.21729, com 95% de confiança
+[1] 12.78312 17.21688
 ````
 
 ## Exemplo 4.4
 ````R
 exemplo44_intervalo_diferenca_duas_medias=function(n1,media1,dp1,n2,media2,dp2){
-z=1.96
+z=qnorm(0.975,0,1)
 diferenca=(media1-media2)
 erro=(z*(sqrt(((dp1**2)/n1)+((dp2**2)/n2))))
 de=(diferenca-erro)
 ate=(diferenca+erro)
 return(c(de,ate))}
 exemplo44_intervalo_diferenca_duas_medias(30,21.3,2.6,30,13.4,1.9)
-[1] 6.747649 9.052351
-### Conclusão: com o intervalo 6.747649;9.052351, conclui-se que a resposta da questão é significativa, pois não não há 0 no intervalo (com 95% de confiança!)
+[1] 6.74767 9.05233
 ````
 
 ## Exemplo 4.5
 ````R
 exemplo45_intervalo_diferenca_duas_medias_amostras_pequenas=function(nh,mediah,vh,nm,mediam,vm){
-t=2.86
+t=qt(0.995,(nh+(nm-2)))
 diferenca=(mediah-mediam)
 variancia=((((nh-1)*vh)+((nm-1)*vm))/(nh+(nm-2)))
 erro=(t*sqrt(variancia*((1/nh)+(1/nm))))
@@ -55,28 +52,26 @@ de=(diferenca-erro)
 ate=(diferenca+erro)
 return(c(de,ate))}
 exemplo45_intervalo_diferenca_duas_medias_amostras_pequenas(10,45.33,1.54,11,43.54,2.96)
-[1] -0.09993731  3.67993731
-### Conclusão: conclui-se, com 99% de confiança, que não há diferença entre as médias das amostras 
+[1] -0.1005549  3.6805549
 ````
 
 ## Exemplo 4.6
 ````R
 exemplo46_intervalo_confianca_proporcao=function(n,amostra){
-z=1.96
+z=qnorm(0.975,0,1)
 estimativa=(amostra/n)
 erro=(z*sqrt((estimativa*(1-estimativa))/n))
 de=(estimativa-erro)
 ate=(estimativa+erro)
 return(c(de*100,ate*100))}
 exemplo46_intervalo_confianca_proporcao(600,420)
-[1] 66.33318 73.66682
-### Conclusão: o intervalo 66.33318%;73.66682% contém a porcentagem de sucessos, com 95% de confiança
+[1] 66.33324 73.66676
 ````
 
 ## Exemplo 4.7
 ````R
 exemplo47_determinar_tamanho_amostra=function(de,ate){
-z=1.96
+z=qnorm(0.975,0,1)
 n=4 #os dados não são assimétricos
 dp=((ate-de)/n)
 e=100
@@ -90,19 +85,20 @@ exemplo47_determinar_tamanho_amostra(50,1000)
 ## Exemplo 4.8 (a)
 ````R
 exemplo48a_amostra_confianca=function(erro_maximo){
-z=1.96
+z=qnorm(0.975,0,1)
 estimacao_p=0.25 # abordagem conservadora, amostra pode ser maior que o necessário
 erro=(erro_maximo**2)
 tamanho=((1.96**2)*(0.25/(erro)))
 return(tamanho)}
 exemplo48a_amostra_confianca(0.05)
+[1] 384.16
 ### Conclusão: considerando um erro de no máximo 5%, conclui-se que o tamanho necessário da amostra é de aproximadamentoe 365
 ````
 
 ## Exemplo 4.8 (b)
 ````R
 exemplo48b_amostra_confianca_estimativa_previa=function(erro_maximo, estimativa_previa){
-z=1.96
+z=qnorm(0.975,0,1)
 erro=(erro_maximo**2)
 tamanho=((1.96**2)*((estimativa_previa*(1-estimativa_previa))/(erro)))
 return(tamanho)}
@@ -128,49 +124,61 @@ exemplo48c_amostra_mais_adequada(2000,385,189)
 ## Exemplo 4.9
 ````R
 exemplo49_amostra_mais_confiavel_com_estimativa_apriori=function(dp,populacao){
-z=2.58
+z=qnorm(0.995,0,1)
 amostra=(z*dp)**2
 amostra_corrigida=((populacao*amostra)/(populacao+amostra))
 return(amostra_corrigida)}
 exemplo49_amostra_mais_confiavel_com_estimativa_apriori(2.8,200)
-[1] 41.38702
+[1] 41.28092
 ### Conclusão: o tamanho aproximado da amostra é 42, com erro máximo de 1%
 ````
 
-## Exemplo 5.2
-> H0: µ = 171 cm 
-
-> H1: µ < 171 cM
+## Exemplo 5.1
 ````R
-exemplo52_significancia_alturas=function(confianca,n,media_amostra,media_populacao,dp){
-z_calc=(media_amostra-media_populacao)/(dp/(sqrt(n)))
-alpha=(1-confianca)
-z_teorico=qnorm(1-(alpha),0,1)
-return(c(z_calc,z_teorico))}
-exemplo52_significancia_alturas(0.95,27,167,171,9)
-[1] -2.309401  1.644854
-### Conclusão: como o valor de Tcalculado é menor que Tteorico, então rejeita-se H0
+exemplo52_teste_hipotese=function(confianca, n, media_ammostra, media_populacao, dp){
+z_calc=((media_ammostra-media_populacao)/(dp/sqrt(n)))
+z_teorico=-qnorm(confianca,0,1)
+if (z_calc<z_teorico)
+  conclusao="H0 rejeirado"
+else
+   conclusao="H0 nao rejeitado"
+return(c(z_calc,z_teorico,conclusao))}
+exemplo51_teste_hipotese(0.95, 27, 167, 171, 9)
+[1] "-2.3094010767585"  "-1.64485362695147" "H0 rejeirado"
+````
+
+## Exemplo 5.2
+
+````R
+exemplo52_teste_hipotese=function(confianca, n, media_ammostra, media_populacao, dp){
+z_calc=((media_ammostra-media_populacao)/(dp/sqrt(n)))
+z_teorico=-qnorm(confianca,0,1)
+if (z_calc<z_teorico)
+  conclusao="H0 rejeirado"
+else
+   conclusao="H0 nao rejeitado"
+return(c(z_calc,z_teorico,conclusao))}
+exemplo51_teste_hipotese(0.95, 27, 167, 171, 9)
+[1] "-2.3094010767585"  "-1.64485362695147" "H0 rejeirado"
 ````
 
 ## Exemplo 5.3
-> H0: µ = 500g
 
-> H1: µ < 500g
 ````R
 exemplo53_teste_sem_desvio_padrao_populacao=function(confianca,n,media_amostra,media_populacao,dp){
 t_calc=(media_amostra-media_populacao)/(dp/(sqrt(n)))
 p_valor=pt(t_calc,n-1)
-t_teorico=qt(confianca, n-1)
-return(c(t_calc,t_teorico))}
+t_teorico=-qt(confianca, n-1)
+if (t_calc<t_teorico)
+  conclusao="H0 rejeitado"
+else
+   conclusao="H0 nao rejeitado"
+return(c(t_calc,t_teorico,conclusao))}
 exemplo53_teste_sem_desvio_padrao_populacao(0.99,16,495,500,5)
-[1] -4.00000  2.60248
-### Conclusão: como o valor de Zcalculado é menor que Zteorico, então rejeita-se H0
+[1] "-4" "-2.60248029501112" "H0 rejeitado"
 ````
 
 ## Exemplo 5.4
-> H0: desvio padrão da amostra A = desvio padrão da amostra B
-
-> H1: desvio padrão daamostra A > desvio padrão da amostra B
 ````R
 exemplo54_teste_amostras_desvio_padrao_independentes=function(confianca,racao_a,racao_b){
 dp_ra=3.12
@@ -196,9 +204,6 @@ exemplo54_teste_amostras_desvio_padrao_independentes(0.95,a,b)
 ````
 
 ## Exemplo 5.5
-> H0: média da amostra A = média da amostra B
-
-> H1: média da amostra A > média da amostra B
 ````R
 exemplo55_teste_amostras_desvio_padrao_independentes=function(confianca,c1,c2){
 n=length(c1)
@@ -214,17 +219,14 @@ if (t_calc>t_teorico)
   conclusao="H0 rejeirado"
 else
    conclusao="H0 nao rejeitado"  
-return(c(t_calc, conclusao))}
+return(c(t_calc,t_teorico,conclusao))}
 c1=c(101.2,102.0,100.8,102.3,101.6)
 c2=c(100.0,102.8,101.5,99.0,102.0)
 exemplo55_teste_amostras_desvio_padrao_independentes(0.95,c1,c2)
-[1] "0.703731550548992" "H0 nao rejeitado"
+[1] "0.703731550548992" "2.13184678632665"  "H0 nao rejeitado"
 ````
 
 ## Exemplo 5.6
-> H0: media igual ao valor suporto para a media das diferenças
-
-> H1: media diferente do valor suporto para a media das diferenças
 ````R
 exemplo56_teste_amostras_dependentes=function(confianca,dif){
 n=length(dif)
@@ -243,9 +245,6 @@ exemplo56_teste_amostras_dependentes(0.995,dif)
 ````
 
 ## Exemplo 5.7
-> H0: p = p0 = 0,57
-
-> H1: p < 0,57
 ````R
 exemplo57_teste_proporcao_populacional=function(confianca,populacao,amostra,previsao){
 p_frequencia=amostra/populacao
@@ -262,9 +261,6 @@ exemplo57_teste_proporcao_populacional(0.95,200,98, 0.57)
 ````
 
 ## Exemplo 5.8
-> H0: pRomi = pConcorrente
-
-> H1: pRomi > pConcorrente
 ````R
 exemplo58_teste_proporcao_duas_populacoes=function(confianca,amostra_romi,total_romi,amostra_concorrente,total_concorrente){
 pr=amostra_romi/total_romi
@@ -272,18 +268,16 @@ pc=amostra_concorrente/total_concorrente
 p=((total_romi*pr)+(total_concorrente*pc))/(total_romi+total_concorrente)
 z_calc=(pr-pc)/(sqrt((p*(1-p)*(1/total_romi+1/total_concorrente))))
 z_teorico=qnorm(confianca,0,1)
-if (z_calc<z_teorico)
+if (z_calc>z_teorico)
   conclusao="H0 rejeitado"
 else
    conclusao="H0 nao rejeitado"  
 return(c(z_calc, z_teorico, conclusao))}
 exemplo58_teste_proporcao_duas_populacoes(0.99,171,180,171,190)
-[1] "1.81757294999992" "2.32634787404084" "H0 rejeitado"
+[1] "1.81757294999992" "2.32634787404084" "H0 nao rejeitado"
 ````
 
 ## Exemplo 5.9
-> H0: O numero de acidentes nao muda conforme o dia da semana
-> H1: Pelo menos um dos dias tem nuumero diferente dos demais.
 ````R
 exemplo59_teste_aderencia=function(confianca,amostra,esperado,observado){
 total=sum(a)
@@ -305,8 +299,6 @@ exemplo59_teste_aderencia(0.975,amostra,esperado,observado)
 ````
 
 ## Exemplo 5.10
-> H0: O numero de filhos e a renda sao independentes
-> H1: Existe dependencia entre o numero de filhos e a renda.
 ````R
 exemplo510_teste_tabelas_contingencia=function(observado,esperado){
 total=sum(observado)
