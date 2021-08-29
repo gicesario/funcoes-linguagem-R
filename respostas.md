@@ -261,6 +261,25 @@ exemplo57_teste_proporcao_populacional(0.95,200,98, 0.57)
 [1] "-2.28524795616017" "-1.64485362695147" "H0 rejeitado"
 ````
 
+## Exemplo 5.8
+> H0: pRomi = pConcorrente
+
+> H1: pRomi > pConcorrente
+````R
+exemplo58_teste_proporcao_duas_populacoes=function(confianca,amostra_romi,total_romi,amostra_concorrente,total_concorrente){
+pr=amostra_romi/total_romi
+pc=amostra_concorrente/total_concorrente
+p=((total_romi*pr)+(total_concorrente*pc))/(total_romi+total_concorrente)
+z_calc=(pr-pc)/(sqrt((p*(1-p)*(1/total_romi+1/total_concorrente))))
+z_teorico=qnorm(confianca,0,1)
+if (z_calc<z_teorico)
+  conclusao="H0 rejeitado"
+else
+   conclusao="H0 nao rejeitado"  
+return(c(z_calc, z_teorico, conclusao))}
+exemplo58_teste_proporcao_duas_populacoes(0.99,171,180,171,190)
+[1] "1.81757294999992" "2.32634787404084" "H0 rejeitado"
+````
 
 
 
